@@ -9,20 +9,22 @@ void printNiz(int niz[], int n) {
     printf("\n");
 }
 
-// Bubble sort verzija 2 sa malom optimizacijom
+// Bubble sort verzija 2.1 sa brojačem zamena
 void bubbleSortV2(int niz[], int n) {
     int i, j, temp;
     bool swapped;
+    int swapCount = 0;  // brojač zamena
 
     for (i = 0; i < n - 1; i++) {
         swapped = false;
 
-        for (j = 0; j < n - 1 - i; j++) {  // poslednji elementi već na mestu
+        for (j = 0; j < n - 1 - i; j++) {
             if (niz[j] > niz[j + 1]) {
                 temp = niz[j];
                 niz[j] = niz[j + 1];
                 niz[j + 1] = temp;
                 swapped = true;
+                swapCount++;  // povećavamo brojač
             }
         }
 
@@ -30,6 +32,8 @@ void bubbleSortV2(int niz[], int n) {
             break;
         }
     }
+
+    printf("Broj izvršenih zamena: %d\n", swapCount);  // nova linija
 }
 
 int main() {
