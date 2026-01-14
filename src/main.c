@@ -1,16 +1,33 @@
 #include <stdio.h>
+#include <stdbool.h>  // za bool tip
 
+// Funkcija za ispis niza
+void printNiz(int niz[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", niz[i]);
+    }
+    printf("\n");
+}
+
+// Bubble sort verzija 2 sa malom optimizacijom
 void bubbleSortV2(int niz[], int n) {
     int i, j, temp;
+    bool swapped;
 
     for (i = 0; i < n - 1; i++) {
-        for (j = 0; j < n - 1; j++) {
+        swapped = false;
+
+        for (j = 0; j < n - 1 - i; j++) {  // poslednji elementi već na mestu
             if (niz[j] > niz[j + 1]) {
                 temp = niz[j];
                 niz[j] = niz[j + 1];
                 niz[j + 1] = temp;
-                printf("Zamenjeno %d i %d\n", niz[j], niz[j + 1]);  // nova linija
+                swapped = true;
             }
+        }
+
+        if (!swapped) {  // ako nije bilo zamene, niz je već sortiran
+            break;
         }
     }
 }
@@ -18,20 +35,14 @@ void bubbleSortV2(int niz[], int n) {
 int main() {
     int niz[] = {5, 3, 8, 4, 2};
     int n = 5;
-    int i;
 
     printf("Niz pre sortiranja:\n");
-    for (i = 0; i < n; i++) {
-        printf("%d ", niz[i]);
-    }
-    printf("\n");
+    printNiz(niz, n);
 
-    bubbleSortV2(niz, n);  // promenjeno ime funkcije
+    bubbleSortV2(niz, n);
 
     printf("Niz posle sortiranja:\n");
-    for (i = 0; i < n; i++) {
-        printf("%d ", niz[i]);
-    }
+    printNiz(niz, n);
 
     return 0;
 }
