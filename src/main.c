@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void bubbleSort(int niz[], int n) {
+void bubbleSortV2(int niz[], int n) {
     int i, j, temp;
 
     for (i = 0; i < n - 1; i++) {
@@ -9,6 +9,7 @@ void bubbleSort(int niz[], int n) {
                 temp = niz[j];
                 niz[j] = niz[j + 1];
                 niz[j + 1] = temp;
+                printf("Zamenjeno %d i %d\n", niz[j], niz[j + 1]);  // nova linija
             }
         }
     }
@@ -25,7 +26,7 @@ int main() {
     }
     printf("\n");
 
-    bubbleSort(niz, n);
+    bubbleSortV2(niz, n);  // promenjeno ime funkcije
 
     printf("Niz posle sortiranja:\n");
     for (i = 0; i < n; i++) {
