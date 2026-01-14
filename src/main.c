@@ -19,11 +19,19 @@ int main() {
     int n = 5;
     int i;
 
+    printf("Niz pre sortiranja:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", niz[i]);
+    }
+    printf("\n");
+
     bubbleSort(niz, n);
 
+    printf("Niz posle sortiranja:\n");
     for (i = 0; i < n; i++) {
         printf("%d ", niz[i]);
     }
 
     return 0;
 }
+
